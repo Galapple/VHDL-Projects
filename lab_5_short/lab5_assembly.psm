@@ -1,0 +1,123 @@
+; toggle light of led indifinetly, with delay of N^3  loops (each loop is about 2 instructions  and each instruction executes in 2 clock cycles)
+; so for instance with a 100Mhz clock, 10ns per cycle, so one loop is about 4 x 10ns = 40 ns. 
+; So N^3 x40 ns is the total delay time we get if we choose theDelay = N.
+             ;
+			 
+	     CONSTANT inport ,02 
+	     CONSTANT outport, 01  
+         CONSTANT theDelay, 0A  ; should be ff
+         NAMEREG s0, count0reg
+   		 NAMEREG s1, count1reg
+		 NAMEREG s2, count2reg
+		 NAMEREG s6, countmeas
+		 NAMEREG s7, scratch_1 
+		 NAMEREG s8 , spacer 
+		 NAMEREG sA, bit0 
+		 NAMEREG sB, bit1 
+		 NAMEREG sC, bit2 
+		 NAMEREG sD, bit3 
+		 NAMEREG sE ,output_reg
+		
+
+     
+  ;myport DSOUT outport
+  ;myportin DSIN inport
+
+  start: 
+		 LOAD countmeas , 14	  
+		 CALL debounce 
+		 CALL reverse
+ output: OUTPUT output_reg, outport
+         JUMP start 
+		 
+ ADDRESS 050 
+             
+	
+delay:  CALL init0
+loop0:  CALL delay1 
+		SUB count0reg,01
+		JUMP NZ,loop0
+	    RETURN
+
+delay1:  CALL init1                            ;delay size
+loop1:   CALL delay2
+     	 SUB count1reg, 01                             ;delay loop
+         JUMP NZ, loop1
+	RETURN
+
+
+
+delay2:     CALL init2                            ;delay size
+loop2:      SUB count2reg, 01                             ;delay loop
+            JUMP NZ, loop2
+	RETURN
+
+
+ADDRESS 080
+
+	init0: LOAD  count0reg, theDelay
+	RETURN
+
+	init1: LOAD  count1reg, theDelay
+	RETURN
+
+	init2: LOAD  count2reg, theDelay
+	RETURN
+	
+
+ADDRESS 090 
+debounce : 
+      INPUT scratch_1 , inport 
+	  LOAD spacer, scratch_1
+      STORE scratch_1 , (countmeas)
+	  CALL delay
+	   SUB countmeas  , 01
+	  JUMP   NZ,  debounce
+	  STORE  scratch_1 , (countmeas)
+	  
+        LOAD countmeas , 14
+loop20:	FETCH scratch_1, (countmeas) 
+        SUB  spacer ,  scratch_1
+		JUMP NZ, debounce
+        INPUT spacer , inport		
+		SUB countmeas, 01 
+		JUMP NZ, loop20
+          
+        RETURN 
+	  
+  ADDRESS 100 
+  
+ reverse : LOAD bit0 , scratch_1 
+          AND bit0 , 0f
+		  AND bit0 , 01
+          SL0  bit0 
+		  SL0  bit0
+		  SL0  bit0
+		  LOAD bit1 , scratch_1 
+		  AND bit1, 02 
+		  SL0 bit1 
+		  LOAD bit2 , scratch_1 
+		  AND bit2 , 04
+          SR0 bit2 
+          LOAD bit3 ,scratch_1 
+          AND bit3 , 08
+          SR0 bit3 
+          SR0 bit3 
+          SR0 bit3 
+		  LOAD output_reg , 00 
+		  ADD output_reg , bit0 
+		  ADD output_reg , bit1 
+		  ADD output_reg , bit2 
+		  ADD output_reg , bit3 
+		  
+		  
+		 
+		RETURN		  
+		  
+		  
+		  
+		  
+		  
+          
+ 
+ 
