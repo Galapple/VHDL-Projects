@@ -1,4 +1,4 @@
-VHDL Projects
+*VHDL Projects*
 
 Welcome to my VHDL Projects repository!
 This repository showcases various projects developed using VHDL targeting the Basys 3 Xilinx FPGA development board.
