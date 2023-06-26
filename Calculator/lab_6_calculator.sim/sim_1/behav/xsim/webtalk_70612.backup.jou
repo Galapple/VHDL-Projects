@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Mon Jun 12 20:03:50 2023
+# Process ID: 70612
+# Current directory: C:/Users/galap/lab_6_calculator/lab_6_calculator.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/galap/lab_6_calculator/lab_6_calculator.sim/sim_1/behav/xsim/xsim.dir/calc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/galap/lab_6_calculator/lab_6_calculator.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/Users/galap/lab_6_calculator/lab_6_calculator.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/galap/lab_6_calculator/lab_6_calculator.sim/sim_1/behav/xsim/xsim.dir/calc_tb_behav/webtalk/xsim_webtalk.tcl -notrace

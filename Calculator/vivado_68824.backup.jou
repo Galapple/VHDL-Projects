@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sun Jun 11 15:56:56 2023
+# Process ID: 68824
+# Current directory: C:/Users/galap/lab_6_calculator
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent38772 C:\Users\galap\lab_6_calculator\lab_6_calculator.xpr
+# Log file: C:/Users/galap/lab_6_calculator/vivado.log
+# Journal file: C:/Users/galap/lab_6_calculator\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/galap/lab_6_calculator/lab_6_calculator.xpr
+update_compile_order -fileset sources_1
+add_files -norecurse C:/Users/galap/lab_6_calculator/lab_6_calculator.srcs/sources_1/new/kcpsm6.vhd
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+add_files -norecurse {C:/Users/galap/lab_6_calculator/lab_6_calculator.srcs/sources_1/new/kcpsm6.vhd C:/Users/galap/lab_6_calculator/lab_6_calculator.srcs/sources_1/new/lab_6_short.vhd}
